@@ -62,6 +62,7 @@ class _LoginState extends State<Login> {
                 _onPasswordChanged();
               },
             ),
+            // boton que hace loggin
             IconButton(onPressed: (){
               if (nameController.text.isNotEmpty && passwordController.text.isNotEmpty) {
                 Preferences().deletePreferences();
