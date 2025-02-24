@@ -1,7 +1,7 @@
 import 'package:examen_final_reyes/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class Login extends StatefulWidget { //state full para que se actualice al momento
   const Login({super.key});
 
   @override
@@ -16,7 +16,7 @@ class _LoginState extends State<Login> {
     super.initState();
     _loadPreferences();
   }
-
+  // carga los datos si existen en las preferencias
   _loadPreferences() async {
     var prefs = await Preferences().getPreferences();
     setState(() {
@@ -24,14 +24,14 @@ class _LoginState extends State<Login> {
       passwordController.text = prefs['lastName'] ?? '';
     });
   }
-
+// guarda los datos en preferencias
     _onNameChanged() {
     Preferences().savePreferences(
       nameController.text,
       passwordController.text,
     );
   }
-
+// guarda los datos en preferencias
   _onPasswordChanged() {
     Preferences().savePreferences(
       nameController.text,
@@ -62,8 +62,13 @@ class _LoginState extends State<Login> {
                 _onPasswordChanged();
               },
             ),
-            if (.isNotEmpty && password.isNotEmpty) {
-          }
+            IconButton(onPressed: (){
+              if (nameController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+                Preferences().deletePreferences();
+                Navigator.of(context).pushNamedAndRemoveUntil('/home',
+                      (Route<dynamic> route) => false);
+              }
+            }, icon: Icon(Icons.login))
           ],
         ),
       ),

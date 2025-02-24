@@ -17,4 +17,10 @@ class Preferences {
     prefs.setString('name', name);
     prefs.setString('password', password);
   }
+
+  Future<void> deletePreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('name', '');
+    prefs.setString('password', '');
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:examen_final_reyes/screens/homescreen.dart';
 import 'package:examen_final_reyes/screens/login.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lenguajes de Programacion',
+      // dirje directamente al log in
       home:
-        Login()
+        Login(),
+        
+      // rutas utiles
+      routes: {
+        '/home': (context) => Homescreen(),
+        '/login': (context) => Login(),
+      }
     );
   }
 }
